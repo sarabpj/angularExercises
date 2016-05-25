@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+<!-- root scope -->
+  <div ng-app="myApp">
+    <div>
+      <input type="text" ng-model="view.data">
+      {{view.data}}
+    </div>
+    <!-- child scope -->
+    <div ng-controller="ScopeController">
+      <input type="text" ng-model="view.data">
+      {{view.data}}
+    </div>
+  </div>
+  <!-- why is it when i type in parent it binds to the child the first time? Because of prototypal inheritance, the value is first defined in the paraent, we are able to set the child's value of data-->
+  <!-- why is it when i type in the child nothing appears in the parent ? The value is first defined in the child, the parent will not know what the value is -->
+  <!-- why is it when i type in the parent again it will no longer update the child ?  we are not passing a reference to what data is from child to parent. The value of the child has been set and the parent does not know about it. -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+<script>
+  angular.module("myApp", []).controller("ScopeController", function($rootScope,$scope) { 
+      window.scope = $scope;
+      window .rootScope = $rootScope;
+      $rootScope.view = {}
+
+  });
+</script>
+</body>
+</html>

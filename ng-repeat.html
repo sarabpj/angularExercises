@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+  <meta charset="UTF-8">
+  <title>Learning repeat</title>
+</head>
+<body ng-init="symbols=['\u2660', '\u2663', '\u2665', '\u2666']">
+  <ul>
+  <h1>
+  <li ng-repeat='symbol in symbols'>
+    {{symbol}}
+   </li>
+   </h1>
+</ul>
+
+
+
+<div ng-show='3 + 4 == 5'>
+  3 + 4 isn't 5, don't show
+</div>
+
+<div ng-show='3 + 4 == 7'>
+  3 + 4 is 7, do show
+</div>
+
+<div ng-hide='3 + 4 == 5'>
+    3 + 4 isn't 5, don't hide
+</div>
+
+<div ng-hide='3 + 4 == 7'>
+  3 + 4 is 7, do hide
+</div>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+</body>
+</html>

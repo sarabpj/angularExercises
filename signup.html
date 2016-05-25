@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up</title>
+<style >
+.green{
+    color:green;
+  }
+
+ .red{
+    color:red;
+  }
+</style>
+</head>
+<body >
+  <h1>Sign up page</h1>
+  <input type="password" ng-model="password" ng-init="password=''" >
+  <!-- classes have conditionals.... to check what the class should be -->
+  <div  ng-class='{red: password.length < 6,green: password.length >= 6}' >
+  Your password is {{password.length}} 
+  <ng-pluralize count="password.length" when="{
+                     '1': 'character', 
+                     'other': 'characters'}">
+  </ng-pluralize>
+  </div>
+
+  <div ng-show='password.length >=6'>
+   <button>Sign Up!</button>
+  </div>
+
+  <div ng-show='password.length < 6'>
+    Password is invalid!
+  </div>
+  
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+</body>
+</html>

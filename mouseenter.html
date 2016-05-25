@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mouseEnter" ng-controller="firstController">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="menter.css">
+</head>
+<body>
+  <!-- <h3>The div was entered {{view.enterCount}} times</h3> -->
+<div class="divbox" ng-mouseenter="myStyle={'background-color': randomColor()}" ng-style="myStyle">
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+<script src='menter.js'></script>
+</body>
+</html>

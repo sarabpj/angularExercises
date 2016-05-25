@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="broken">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div ng-controller="MainController">
+     <div>{{ viewModel.message }}</div>
+    <div ng-if="viewModel.number === 42">
+      Secret Message: <input type="text" ng-model="viewModel.message">
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+  <script>var app = angular.module("broken", []);
+
+app.controller('MainController', function($scope) {
+  $scope.viewModel = {}
+  // you never want to bind to primitives
+  $scope.viewModel.number = 42;
+  window.scope = $scope;
+});</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+  <meta charset="UTF-8">
+  <title>Another Angular</title>
+</head>
+<body>
+  <h1>Say something </h1>
+
+<!--   np-init another built in directive that allow you to initally set the value -->
+<!--   <input type="text" ng-model='greeting' ng-init="greeting='sara'"> -->
+  <input type="text" ng-model='greeting'>
+  <p> Yelling: <strong>{{greeting | uppercase}} </strong> </p>
+  <p> Whispering: <i>{{greeting | lowercase}} </i> </p>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html ng-app="myapp">
+  <head>
+    <meta charset="utf-8">
+    <title>Hello, World!</title>
+  </head>
+  <body>
+    <div ng-controller="HelloController">
+      <h2>Hello, {{hello.title}}!</h2>
+    </div>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+    <script>
+    angular.module("myapp", [])
+      .controller("HelloController", function($scope) {
+        $scope.hello = {};
+        $scope.hello.title = "World";
+      });
+    </script>
+  </body>
+</html> -->

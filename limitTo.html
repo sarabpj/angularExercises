@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+  <meta charset="UTF-8">
+  <title>limitTo</title>
+</head>
+<body>
+<!-- <div ng-controller="ExampleController"> -->
+
+How many digits of pi do you want?
+<select ng-model="numLimit" ng-init="numLimit='2'">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+  <option value="7">7</option>
+</select>
+<br>
+Here you go! The first 
+<ng-pluralize count="numLimit" when="{
+                     '1': '1 digit', 
+                     'other': '{{numLimit | number}} digits'}">
+</ng-pluralize>
+of pi!
+<br>
+
+3.{{14159265359 | limitTo:numLimit}}
+</p>  
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+</body>
+</html>

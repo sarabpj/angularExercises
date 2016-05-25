@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="madLib">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body >
+  <h1>Please fill out the following!</h1>
+  <hr>
+
+ <div ng-controller="mainController"> 
+  <form ng-model="isShow">
+  <div>
+    <strong>Boy's Name</strong>
+    <input type="text" placeholder="Enter a boy's name...." ng-model='word.boyName'>
+  </div>
+  <div>
+    <strong>Adjective</strong>
+    <input type="text" placeholder="Enter an adjective..." ng-model='word.adj'>
+  </div>
+  <div>
+    <strong>Plural Noun</strong>
+    <input type="text" placeholder="Enter a plural noun..." ng-model='word.pluralNoun'>
+  </div>
+  <div>
+    <strong>Plural Noun</strong>
+    <input type="text" placeholder="Enter a plural noun" ng-model='word.pluralNoun2'>
+  </div>
+  <div>
+    <strong> An insect, plural</strong>
+    <input type="text" placeholder="Enter a insect, plural " ng-model='word.pluralInsect'>
+  </div>
+  <div>
+    <strong>Plural Noun</strong>
+    <input type="text" placeholder="Enter a plural noun" ng-model='word.pluralNoun3'>
+  </div>
+  <div>
+    <strong>A verb ending in "s"</strong>
+    <input type="text" placeholder="Enter a verb ending in s" ng-model='word.pluralVerb'>
+  </div>
+  <button ng-click="isShow = !isShow"> Generate</button>
+  </form>
+
+  <h1>Mad with the Libs</h1>
+  <hr>
+
+  <div ng-show="isShow">
+  <h3>I'm in love with <span>{{word.boyName | uppercase}}</span>. He's so <span>{{word.adj | uppercase}}</span>! He has big flat <span>{{word.pluralNoun | uppercase}}</span>, and when our <span>{{word.pluralNoun2 | uppercase}}</span> meet, I get <span>{{word.pluralInsect | uppercase}}</span> in my stomach. I've fallen for him like a ton of <span>{{word.pluralNoun3 | uppercase}}</span>, and he <span>{{word.pluralVerb | uppercase}}</span> for me, too. But I think he's got another girlfriend. What should I do?</h3>
+  <button ng-click="reset()"> New Game</button>
+  </div>
+
+</div>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+  <script src ="main.js"></script>
+</body>
+</html>

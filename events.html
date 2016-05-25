@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="eventApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Events</title>
+</head>
+<body>
+  <h1>Word Reverser</h1>
+    <div ng-controller="ChildController">
+      <input type="text" ng-model="view.data" >
+      <p>Your word is: {{view.data}}</p>
+      <button ng-click="reverse()">Reverse!</button>
+   </div>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+  <script src="eventsMain.js"></script>
+</body>
+</html>

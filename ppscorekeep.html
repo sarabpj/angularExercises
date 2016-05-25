@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="pingPong">
+<head>
+  <meta charset="UTF-8">
+  <title>Ping Pong</title>
+</head>
+<body>
+  <h1>Ping Pong Score</h1>
+  <div ng-controller="scoreController">
+    <div ng-repeat="team in teams">
+    <!-- use ng-hide or ng-show(in the views) to toggle an object attached to scope in the controller -->
+      <p>{{team.name}}</p>
+      <p ng-click="score(team)">{{team.score}}</p>
+      <!-- <div ng-show="team.serve">Serving</div> -->
+      <div ng-if={{!!team.serve}}>PENIS!</div>
+      
+    </div>
+    <button ng-click="reset()">Reset</button>
+  </div>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+<script src="scoreKeep.js"></script>
+</body>
+</html>
