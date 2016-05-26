@@ -1,5 +1,6 @@
 var app = angular.module("redditApp", [])
-var m = moment().calendar();
+var m = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
+
 
 app.controller('firstController', function($scope){
   $scope.view={};
@@ -14,12 +15,11 @@ app.controller('firstController', function($scope){
                   image:"http://lorempixel.com/150/150/",
                   votes: 13, 
                   description:"Candy", 
-                  postTime:"Yesterday at 2:30 AM", 
+                  postTime:m, 
                   comments:[{author:"sheena", text:"that's so cool"}]} ];
 
   $scope.noPost= false;
-  $scope.view.addComment= false;
-  $scope.view.orderPref='votes';
+
 
   $scope.submitPost = function () {
       $scope.posts.push({
@@ -28,7 +28,7 @@ app.controller('firstController', function($scope){
         image: $scope.view.image, 
         votes: 0,
         description: $scope.view.description,
-        // rememeber to include postTime
+        postTime: m,
         comments: []
         })
       $scope.view.title = ""
@@ -46,7 +46,18 @@ app.controller('firstController', function($scope){
         post.votes -= 1;
    };
 
-   $scope.thisScope = $scope;
+  window.scope = $scope;
+  $scope.sort = "votes";
+      // $scope.reverse = false;
+      $scope.changeSort = function(value){
+          if ($scope.sort == value){
+            // $scope.reverse = !$scope.reverse;
+            return;
+          }
+          $scope.sort = value;
+          // $scope.reverse = false;
+      }
+
 
   $scope.submitComment = function (post) {
       post.comments.push({
@@ -55,6 +66,6 @@ app.controller('firstController', function($scope){
         })
       $scope.view.author = ""
       $scope.view.text = ""
-      $scope.view.addComment=false;
+      post.addComment=false;
   }
 })

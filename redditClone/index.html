@@ -37,10 +37,13 @@
         </div>
       </form>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ng-click="view.orderPref='votes'">Sort By Votes <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Sort By {{sort}}<span class="caret"></span></a>
+          <!-- what needs to show is the current orderby value -->
           <ul class="dropdown-menu">
-            <li><a href="#" ng-click="view.orderPref='date'">Sort By Date</a></li>
-            <li><a href="#" ng-click="view.orderPref='title'">Sort By Title</a></li>
+          <!-- if one is clicked on it should orderby that preference, the default is by vote -->
+            <li><a href="#" ng-click="changeSort('post.votes')"> Votes</a></li>
+            <li><a href="#" ng-click="changeSort('post.date')">Date</a></li>
+            <li><a href="#" ng-click="changeSort('post.title')"> Title</a></li>
           </ul>
         </li>
       </ul>
@@ -70,7 +73,7 @@
   </form>
 <br>
 
-<div ng-repeat="post in posts | orderBy:view.orderPref:true " class="container well">
+<div ng-repeat="post in posts | orderBy:sort" class="container well">
   <div class="row">
     <div class="col-sm-2">
       <img src={{post.image}} alt="" height="150px" width="150px">
@@ -99,13 +102,14 @@
                          'other': '{{numLimit | number}} comments'}">
             </ng-pluralize> 
         </span> |
-        <span ng-click="view.addComment = !view.addComment"><span class="glyphicon glyphicon-pencil"></span> Add Comment</span>
+        <span ng-click="post.addComment = !post.addComment"><span class="glyphicon glyphicon-pencil"></span> Add Comment</span>
       </div>
 
       <div ng-show="showComment" ng-repeat="comment in post.comments">
          <strong> {{comment.author}}</strong>  - {{comment.text}}
       </div>
-      <form ng-show="view.addComment" ng-submit="submitComment(post)" class="container">
+      <!-- having post.addComment, will help prevent it from happening on all the posts -->
+      <form ng-show="post.addComment" ng-submit="submitComment(post)" class="container">
          <label>Author</label>
          <input type="text" placeholder="Post Author" ng-model="view.author" required>
          <label>Body</label>
@@ -116,9 +120,6 @@
   </div>
 
 </div>
-
-
-
 
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
