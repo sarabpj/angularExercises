@@ -5,9 +5,11 @@ app.controller('scoreController', function($scope){
   window.scope = $scope;
   //
   $scope.reset= function (){
+  $scope.view = {};
+
    $scope.teams =[
-    {name: "PLAYER 1", score:0, serve:!sup},
-    {name: "PLAYER 2", score:0, serve:sup},
+    {name: "PLAYER 1", score:0, serve: serve},
+    {name: "PLAYER 2", score:0, serve: !serve},
    ]
 
    // create a function which listen
@@ -15,19 +17,17 @@ app.controller('scoreController', function($scope){
   $scope.score = function(team) {
         team.score += 1;
         // fucntion that checks the count aka score
-        if(superTotal % 2 === 0)(whoseServe())
-        if(team.score > 12){ $scope.reset();}
+        if(superTotal % 2 === 0)(whoseServe(team))
+        if(team.score > 12){ $scope.reset()}
         
-    };
+   };
 
   var superTotal =0;
-  var sup = false;
+  var serve = false;
 
-  function whoseServe(){
-     superTotal++;
-  if(superTotal % 2 ===0){ sup = !sup}
-     console.log(superTotal)
-     console.log(sup)
+  function whoseServe(team){
+     superTotal = superTotal+ 2;
+     team.serve = !team.serve
   }
 
   }

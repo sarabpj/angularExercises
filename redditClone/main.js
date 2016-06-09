@@ -1,5 +1,5 @@
 var app = angular.module("redditApp", [])
-var m = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
+// var m = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
 
 
 app.controller('firstController', function($scope){
@@ -9,13 +9,27 @@ app.controller('firstController', function($scope){
                   image:"http://lorempixel.com/150/150/", 
                   votes: 10,
                   description:"Turn that frown upside down", 
-                  postTime: m, 
+                  postTime: moment().subtract(30, 'hours').calendar(null, {
+                     sameDay: '[Today at] h:mm a',
+                     nextDay: '[Tomorrow]',
+                     nextWeek: 'dddd',
+                     lastDay: '[Yesterday at] h:mm a',
+                     lastWeek: '[Last] dddd [at] h:mm a',
+                     sameElse: 'DD/MM/YYYY [at] h:mm a'
+                   }),
                   comments:[{author:"emily", text:"that's so cool"}]}, 
                   {title:"Sweet", author:"Sara", 
                   image:"http://lorempixel.com/150/150/",
                   votes: 13, 
                   description:"Candy", 
-                  postTime:m, 
+                  postTime: moment().subtract(10, 'hours').calendar(null, {
+                     sameDay: '[Today at] h:mm a',
+                     nextDay: '[Tomorrow]',
+                     nextWeek: 'dddd',
+                     lastDay: '[Yesterday at] h:mm a',
+                     lastWeek: '[Last] dddd [at] h:mm a',
+                     sameElse: 'DD/MM/YYYY [at] h:mm a'
+                   }),
                   comments:[{author:"sheena", text:"that's so cool"}]} ];
 
   $scope.noPost= false;
@@ -28,7 +42,14 @@ app.controller('firstController', function($scope){
         image: $scope.view.image, 
         votes: 0,
         description: $scope.view.description,
-        postTime: m,
+        postTime: moment().calendar(null, {
+                     sameDay: '[Today at] h:mm a',
+                     nextDay: '[Tomorrow]',
+                     nextWeek: 'dddd',
+                     lastDay: '[Yesterday at] h:mm a',
+                     lastWeek: '[Last] dddd [at] h:mm a',
+                     sameElse: 'DD/MM/YYYY [at] h:mm a'
+                   }),
         comments: []
         })
       $scope.view.title = ""
@@ -46,18 +67,19 @@ app.controller('firstController', function($scope){
         post.votes -= 1;
    };
 
-  window.scope = $scope;
-  $scope.sort = "votes";
-      // $scope.reverse = false;
-      $scope.changeSort = function(value){
-          if ($scope.sort == value){
-            // $scope.reverse = !$scope.reverse;
-            return;
-          }
-          $scope.sort = value;
-          // $scope.reverse = false;
-      }
+  // window.scope = $scope;
+  // $scope.sort = "votes";
+  //     // $scope.reverse = false;
+  //     $scope.changeSort = function(value){
+  //         if ($scope.sort == value){
+  //           // $scope.reverse = !$scope.reverse;
+  //           return;
+  //         }
+  //         $scope.sort = value;
+  //         // $scope.reverse = false;
+  //     }
 
+  $scope.sort="name";
 
   $scope.submitComment = function (post) {
       post.comments.push({
