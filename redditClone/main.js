@@ -67,19 +67,23 @@ app.controller('firstController', function($scope){
         post.votes -= 1;
    };
 
-  // window.scope = $scope;
-  // $scope.sort = "votes";
-  //     // $scope.reverse = false;
-  //     $scope.changeSort = function(value){
-  //         if ($scope.sort == value){
-  //           // $scope.reverse = !$scope.reverse;
-  //           return;
-  //         }
-  //         $scope.sort = value;
-  //         // $scope.reverse = false;
-  //     }
+  window.scope = $scope;
 
-  $scope.sort="name";
+  $scope.sort = "-votes";
+  $scope.sortValue = "Votes"
+      // $scope.reverse = false;
+      $scope.changeSort = function(value){
+          if ($scope.sort == value){
+            // $scope.reverse = !$scope.reverse;
+            return;
+          }
+          $scope.sort = value;
+          if($scope.sort === "-votes") $scope.sortValue = "Votes"
+          if($scope.sort === "postTime") $scope.sortValue = "Date"
+          if($scope.sort === "title") $scope.sortValue = "Title"
+          // $scope.reverse = false;
+      }
+
 
   $scope.submitComment = function (post) {
       post.comments.push({
